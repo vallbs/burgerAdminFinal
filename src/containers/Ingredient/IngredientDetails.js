@@ -80,7 +80,6 @@ class IngredientDetails extends Component {
 
     render() {
         let ingredient = <p>loading...</p>;
-
         if(this.state.ingredient) {
             ingredient = (
                 <div className="IngredientDetailsData">
@@ -106,7 +105,6 @@ class IngredientDetails extends Component {
                 <form 
                     className="IngredientDetailsForm"
                     onSubmit={ evt => this.handleSaveIngredient(evt) }>
-
                     <ButtonControl
                         classes="ButtonControl ButtonSave"
                         clicked={ evt => this.handleSaveIngredient(evt) }
@@ -122,23 +120,7 @@ class IngredientDetails extends Component {
                         clicked={ evt => this.handleCancelChanges(evt) }
                         label="назад"
                     />
-
                     { ingredient }
-
-                    {/* <input 
-                        className="IngredientButton IngredientButtonSave"
-                        type="submit" 
-                        value="зберегти" />
-                    <button
-                        className="IngredientButton IngredientButtonCancel"
-                        onClick={ evt => this.handleDeleteIngredient(evt) }
-                        >видалити
-                    </button>
-                    <button
-                        className="IngredientButton IngredientButtonCancel"
-                        onClick={ evt => this.handleCancelChanges(evt) }
-                        >відмінити
-                    </button> */}
                 </form>
                 {/* {ingredient} */}
             </div>
@@ -147,7 +129,8 @@ class IngredientDetails extends Component {
 
     state = {
         ingredient: null,
-        loading: false
+        isloading: false,
+        hasErrored: false
     }
 }
 

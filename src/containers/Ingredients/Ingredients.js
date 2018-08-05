@@ -1,26 +1,14 @@
 import React, { Component } from 'react';
 import "./Ingredients.css";
 import axios from "../../axios";
+import { connect } from 'react-redux';
+import * as ingredientActions from '../../actions/ingredientActions';
 
 import ButtonControl from '../ButtonControl/ButtonControl';
 
 class Ingredients extends Component {
     componentDidMount = () => {
-        axios.get("/ingredients.json")
-            .then(response => {
-                const data = response.data;
-                let ingredients = Object.keys(data).map(key => {
-                    return {
-                        ...data[key],
-                        id: key
-                    };
-                });
-                ingredients = ingredients.sort( (a,b) => {
-                    return a.name !== b.name ? a.name < b.name ? -1 : 1 : 0;
-                });
-                this.setState({ingredients});
-            })
-            .catch(error => console.log(error));
+        this.props.fetchIngredients("/ingredients.json");
     }
 
     handleCreateIngredient = () => {
@@ -33,8 +21,10 @@ class Ingredients extends Component {
 
     render () {
         let ingredients = <p>loading...</p>
-        if(this.state.ingredients) {
-            ingredients = this.state.ingredients.map(ing => {
+        // if(this.state.ingredients) {
+        if(this.props.ingredients) {
+            // ingredients = this.state.ingredients.map(ing => {
+            ingredients = this.props.ingredients.map(ing => {
                 return (
                     <li 
                         onClick={ ingredientId => this.handleIngredientDetails(ing.id) }
@@ -61,8 +51,24 @@ class Ingredients extends Component {
     }
 
     state = {
-        ingredients: null
+        ingredients: null,
+        isLoading: false,
+        hasErrored: false
     }
 };
 
-export default Ingredients;
+const mapStateToProps = state => {
+    return {
+        ingredients: state.ingredientReducer.ingredients,
+        isLoading: state.ingredientReducer.isLoading,
+        hasErrored: state.ingredientReducer.hasErrored,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchIngredients: url => dispatch(ingredientActions.fetchIngredients(url))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Ingredients);

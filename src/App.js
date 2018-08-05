@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { withRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { withRouter, Switch, Route, Redirect } from 'react-router-dom'
 
 import Menu from './containers/Menu/Menu';
 import Burgers from './containers/Burgers/Burgers';
@@ -17,6 +17,7 @@ class App extends Component {
   componentDidMount = () => {
     this.props.history.push("/burgers");
   }
+
   render() {
     return (
       <div>

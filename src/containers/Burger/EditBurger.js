@@ -186,7 +186,7 @@ class EditBurger extends Component {
                         <span>Ціна: { this.state.burgerPrice } грн</span> 
                     </p> 
                     <p>
-                        <span > { this.state.ingredientsString } </span> 
+                        <span >Інгредієнти: { this.state.ingredientsString } </span> 
                     </p> 
                 </div>
             )
