@@ -4,6 +4,7 @@ import './App.css';
 
 import { withRouter, Switch, Route, Redirect } from 'react-router-dom';
 
+import Main from './containers/Main';
 import Menu from './containers/Menu/Menu';
 import Burgers from './containers/Burgers/Burgers';
 import BurgerDetails from './containers/Burger/BurgerDetails';
@@ -14,25 +15,45 @@ import IngredientDetails from './containers/Ingredient/IngredientDetails';
 import CreateIngredient from './containers/Ingredient/CreateIngredient';
 
 class App extends Component {
-  render() {
-    return (
-      <div>
-        <Menu />
-        <Switch>
-          <Route path="/burgers/create" exact component={CreateBurger}/>
-          <Route path="/burgers/:id/edit" exact component={EditBurger}/>
-          <Route path="/burgers/:id" exact component={BurgerDetails}/>
-          <Route path="/burgers" component={Burgers}/>
-          <Route path="/ingredients/new" component={CreateIngredient}/>
-          <Route path="/ingredients/:id" component={IngredientDetails}/>
-          <Route path="/ingredients" component={Ingredients}/>
-          <Route path="/" component={Burgers}/>
-        </Switch>
-        {/* <Burgers />
-        <Ingredients /> */}
-      </div>
-    );
-  }
+    render() {
+        return ( <
+            div >
+            <
+            Menu / >
+            <
+            Switch >
+            <
+            Route path = "/burgers/create"
+            exact component = { CreateBurger }
+            /> <
+            Route path = "/burgers/:id/edit"
+            exact component = { EditBurger }
+            /> <
+            Route path = "/burgers/:id"
+            exact component = { BurgerDetails }
+            /> <
+            Route path = "/burgers"
+            component = { Burgers }
+            /> <
+            Route path = "/ingredients/new"
+            component = { CreateIngredient }
+            /> <
+            Route path = "/ingredients/:id"
+            component = { IngredientDetails }
+            /> <
+            Route path = "/ingredients"
+            component = { Ingredients }
+            /> <
+            Route path = "/"
+            component = { Main }
+            /> <
+            / Switch> {
+                /* <Burgers />
+                        <Ingredients /> */
+            } <
+            /div>
+        );
+    }
 }
 
 export default withRouter(App);

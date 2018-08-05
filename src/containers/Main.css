@@ -1,0 +1,13 @@
+.ToBurgers {
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.ToIngredients {
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+    cursor: pointer;
+}
