@@ -1,0 +1,126 @@
+.CreateBurger {
+    border: 1px solid black;
+    margin: 30px
+}
+
+.BurgerIngredientItem {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin: 20px;
+}
+
+.BurgerIngredientItem_new {
+    display: inline-block;
+    /* justify-content: center; */
+    align-items: center;
+    margin: 10px;
+    border: 1px solid black;
+    padding:  0;
+}
+
+.BurgerIngredientItem--srting{
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.BurgerIngredientItem--Add{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    /* background: #ff8f00; */
+}
+
+.IngredientName {
+    /* border: 1px solid black; */
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-left: 20px;
+}
+
+.IngredientPrice {
+    font-size: 1rem;
+    font-style: normal;
+    /* border: 1px solid black; */
+    margin-left: 10px;
+    padding: 0px;
+}
+
+.IngredientQuantity {
+    font-size: 1.2rem;
+    font-weight: 700;
+    /* border: 1px solid black; */
+    margin: 0 5px;
+    padding: 0 10px;
+}
+
+.BurgerButton {
+    color: white;
+    /* background: #4C8FFB;
+    border: 1px #3079ED solid;
+    box-shadow: inset 0 1px 0 #80B0FB; */
+    /* margin: 20px 0 20px 30px; */
+    margin-right: 20px;
+    padding: 10px 20px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 9pt;
+    outline: none;
+    cursor: pointer;
+}
+
+.BurgerButtonSave {
+    background-color: #57a957;
+    border-color: #57a957;
+}
+
+.BurgerButtonSave:hover {
+    background-color: #62c462;
+}
+
+.BurgerButtonSave:active {
+    background: #57a957;
+}
+
+.BurgerButtonCancel {
+    background-color: #ca3535;
+    border-color: #c43c35;
+}
+
+.BurgerButtonCancel:hover {
+    background-color: #ee5f5b;
+}
+
+.BurgerButtonCancel:active {
+    background: #c43c35;
+}
+
+.BurgerButtonAdd {
+    margin: 0;
+    background-color: #03a9f4;
+    border-color: #03a9f4;
+}
+
+.BurgerButtonAdd:hover {
+    background-color: #039be5;
+}
+
+.BurgerButtonAdd:active {
+    background: #0288d1;
+}
+
+.BurgerButtonRemove {
+    margin: 0;
+    background-color: #ffb300;
+    border-color: #ffb300;
+}
+
+.BurgerButtonRemove:hover {
+    background-color: #ffa000;
+}
+
+.BurgerButtonRemove:active {
+    background: #ff8f00;
+}
+

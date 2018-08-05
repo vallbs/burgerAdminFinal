@@ -1,0 +1,63 @@
+.Burgers {
+    /* border: 1px solid black; */
+    margin: 0 30px;
+}
+
+.BurgersList {
+    padding: 0;
+    margin: 0;
+}
+
+.BurgerItem {
+    max-width: 250px;
+    list-style: none;
+    font-size: 1.2rem;
+    /*border: 1px solid red; */
+    margin: 0px 30px 10px 30px;
+    padding: 15px;
+}
+
+.BurgerItem:hover {
+    background-color: #e8f5e9;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.BurgerItemName {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.BurgerItemIngredients {
+    /* font-style: italic; */
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    margin: 5px 0 10px 0;
+    /* border: 1px solid red; */
+}
+
+.BurgerItemPrice {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.BurgerCreateButton {
+    color: white;
+    background: #4C8FFB;
+    border: 1px #3079ED solid;
+    box-shadow: inset 0 1px 0 #80B0FB;
+    margin: 20px 0 20px 30px;
+    padding: 10px 20px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 9pt;
+    outline: none;
+    cursor: pointer;
+}
+
+.BurgerCreateButton:hover {
+    border: 1px #2F5BB7 solid;
+    box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 #5A94F1;
+    background: #3F83F1;
+}
