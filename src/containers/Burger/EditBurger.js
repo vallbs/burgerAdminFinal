@@ -146,83 +146,82 @@ class EditBurger extends Component {
             .catch(error => console.log(error));
     }
 
+    handleCancelChanges = (evt) => {
+        evt.preventDefault();
+
+        this.props.history.goBack();
+    }
+
     render() {
-        let burger = < p > loading... < /p>;
-        let ingredients = < p > loading... < /p>;
+        let burger = <p> loading... </p>;
+        let ingredients = <p> loading... </p>;
 
         if (this.state.burgerName && this.state.burgerPrice) {
-            burger = ( <
-                div >
-                <
-                p >
-                <
-                label > Назва: < /label> <
-                input onChange = { evt => this.handleNameChanges(evt) }
-                type = "text"
-                name = "name"
-                value = { this.state.burgerName }
-                /> <
-                /p> <
-                p >
-                <
-                span > Ціна: { this.state.burgerPrice } < /span> <
-                /p> <
-                p >
-                <
-                span > { this.state.ingredientsString } < /span> <
-                /p> <
-                /div>
+            burger = ( 
+                <div>
+                    <p>
+                        <label > Назва: </label> 
+                        <input 
+                            onChange = { evt => this.handleNameChanges(evt) }
+                            type = "text"
+                            name = "name"
+                            value = { this.state.burgerName }/> 
+                    </p> 
+                    <p>
+                        <span>Ціна: { this.state.burgerPrice } </span> 
+                    </p> 
+                    <p>
+                        <span > { this.state.ingredientsString } </span> 
+                    </p> 
+                </div>
             )
         }
 
         if (this.state.ingredients) {
             ingredients = this.state.ingredients.map(ingredient => {
-                return ( <
-                    div className = "BurgerIngredientItem_new"
-                    key = { ingredient.id } >
-                    <
-                    button className = "BurgerIngredientItem--Add"
-                    onClick = {
-                        (evt, ingredientId, ingredientPrice) =>
-                        this.handleAddIngredient(evt, ingredient.id, ingredient.price)
-                    } >
-                    + < /button> <
-                    div className = "BurgerIngredientItem--srting" >
-                    <
-                    span className = "" > { ingredient.name }, < /span> <
-                    span className = "" > { ingredient.price }
-                    грн < /span> <
-                    span className = "" > ({ ingredient.quantity }) < /span> <
-                    /div>
+                return ( 
+                    <div 
+                        className = "BurgerIngredientItem_new"
+                        key = { ingredient.id } >
+                        <button 
+                            className = "BurgerIngredientItem--Add"
+                            onClick = {
+                                (evt, ingredientId, ingredientPrice) =>
+                                this.handleAddIngredient(evt, ingredient.id, ingredient.price)
+                            }>
+                        +</button> 
+                        
+                        <div className = "BurgerIngredientItem--srting" > 
+                            <span className = "" > { ingredient.name }, </span> 
+                            <span className = "" > { ingredient.price }грн </span> 
+                            <span className = "" > ({ ingredient.quantity }) </span> 
+                        </div>
 
-                    <
-                    button className = "BurgerIngredientItem--Add"
-                    onClick = {
-                        (evt, ingredientId, ingredientPrice) =>
-                        this.handleRemoveIngredient(evt, ingredient.id, ingredient.price)
-                    }
-                    disabled = { ingredient.quantity === 0 } >
-                    - < /button> <
-                    /div>
+                        <button 
+                            className = "BurgerIngredientItem--Add"
+                            onClick = { (evt, ingredientId, ingredientPrice) =>
+                                this.handleRemoveIngredient(evt, ingredient.id, ingredient.price)
+                            }
+                            disabled = { ingredient.quantity === 0 } >
+                        -</button> 
+                    </div>
                 );
             });
         }
 
-        return ( <
-            div className = "CreateBurger" >
-            <
-            form onSubmit = { evt => this.handleUpdateBurger(evt) } > { burger } <
-            input className = "BurgerButton BurgerButtonSave"
-            type = "submit"
-            value = "зберегти" / >
-            <
-            button className = "BurgerButton BurgerButtonCancel"
-            onClick = { evt => this.handleCancelChanges(evt) } >
-            відмінити <
-            /button> <
-            /form> <
-            hr / > { ingredients } <
-            /div>
+        return (
+            <div className = "CreateBurger" >
+                <form onSubmit = { evt => this.handleUpdateBurger(evt) } > { burger } 
+                    <input className = "BurgerButton BurgerButtonSave"
+                    type = "submit"
+                    value = "зберегти" / >
+
+                    <button className = "BurgerButton BurgerButtonCancel"
+                    onClick = { evt => this.handleCancelChanges(evt) } >
+                    відмінити </button> 
+                </form> 
+                <hr /> { ingredients } 
+            </div>
         );
     }
 
