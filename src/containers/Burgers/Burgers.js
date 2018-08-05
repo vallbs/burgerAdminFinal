@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-
 import  './Burgers.css';
 import axios from '../../axios';
+
+import ButtonControl from '../ButtonControl/ButtonControl';
 
 class Burgers extends Component {
     componentDidMount = () => {
@@ -21,8 +22,8 @@ class Burgers extends Component {
     }
 
     handleBurgerDetails = (burgerId) => {
-        // <Redirect to={this.props.location.pathname+"/"+burgerId} />
-        this.props.history.push(this.props.location.pathname+"/"+burgerId);
+        // this.props.history.push(this.props.location.pathname+"/"+burgerId);
+        this.props.history.push(this.props.location.pathname + "/" + burgerId + "/edit");
     }
 
     handleCreateBurger = () => {
@@ -59,40 +60,13 @@ class Burgers extends Component {
             });
         }
 
-        // const burgers = this.state.burgers.map(burger => {
-        //     return (
-        //         <li 
-        //             onClick={burgerId => this.handleBurgerDetails(burger.id)}
-        //             className="BurgerItem"
-        //             key={burger.id}>
-        //             <div >
-        //                 <span className="BurgerItemName">{burger.name}</span>
-        //                 {/* <span>{burger.price} грн</span> */}
-        //             </div>
-        //             <div>
-        //                 <p className="BurgerItemIngredients">
-        //                     {burger.ingredients.reduce((accum, curValue, index, array) => {
-        //                         let endChar = (index === array.length-1) ? "" : ", ";
-        //                         return accum + curValue.name + endChar;
-        //                     }, "")}
-        //                 </p>
-        //             </div>
-        //             <div className="BurgerItemPrice">
-        //                 <span>{burger.price} грн</span>
-        //             </div>
-        //         </li>
-        //     );
-        // });
-
         return (
             <div className="Burgers">
-            {/* // <div> */}
-                {/* <h1>Бургери</h1> */}
-                <button 
-                    className="BurgerCreateButton"
-                    onClick={this.handleCreateBurger}
-                    >новий бургер
-                </button>
+                <ButtonControl
+                    classes="ButtonControl ButtonNew"
+                    clicked={ this.handleCreateBurger }
+                    label="новий бургер"
+                />
                 <ul className="BurgersList">{burgers}</ul>
             </div>
         );

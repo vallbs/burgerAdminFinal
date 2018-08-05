@@ -22,12 +22,13 @@ class App extends Component {
         <Switch>
           <Route path="/burgers/create" exact component={CreateBurger}/>
           <Route path="/burgers/:id/edit" exact component={EditBurger}/>
-          <Route path="/burgers/:id" exact component={BurgerDetails}/>
+          {/* <Route path="/burgers/:id/" exact component={EditBurger}/> */}
+          {/* <Route path="/burgers/:id" exact component={BurgerDetails}/> */}
           <Route path="/burgers" component={Burgers}/>
           <Route path="/ingredients/new" component={CreateIngredient}/>
           <Route path="/ingredients/:id" component={IngredientDetails}/>
           <Route path="/ingredients" component={Ingredients}/>
-          <Route path="/" component={Main}/>
+          <Route path="/" exact component={Main}/>
         </ Switch>
         {/* <Burgers />
         <Ingredients /> */}

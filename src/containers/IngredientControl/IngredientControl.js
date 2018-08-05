@@ -1,28 +1,32 @@
 import React from 'react';
+import './IngredientControl.css';
 
 const ingredientControl = (props) => {
-    console.log(props);
     return (
         <div 
-            className = ""
+            className = "IngredientControl"
             key = { props.ingredient.id }>
             
             <button 
                 className = ""
                 onClick={ props.addIngredient }>
             +</button> 
-            
-            <div className = "" > 
-                <span className = "" > { props.ingredient.name }, </span> 
-                <span className = "" > { props.ingredient.price }грн </span> 
-                <span className = "" > ({ props.ingredient.quantity }) </span> 
-            </div>
-
+            <span className = "IngredientQuantity" >{ props.ingredient.quantity }</span> 
             <button 
-                className = "BurgerIngredientItem--Add"
+                className = ""
                 onClick={ props.removeIngredient }
                 disabled = { props.ingredient.quantity === 0 } >
             -</button> 
+            
+            {/* <div className = "" > 
+                <span className = "" > { props.ingredient.name }, </span> 
+                <span className = "" > { props.ingredient.price }грн </span> 
+                <span className = "" > ({ props.ingredient.quantity }) </span> 
+            </div> */}
+            <div className = "IngredientNamePrice" > 
+                <span className = "" > { props.ingredient.name }, </span> 
+                <span className = "" > { props.ingredient.price }грн </span> 
+            </div>
         </div>
     );
 }

@@ -11,6 +11,12 @@ const menu = (props) => {
                 <NavLink 
                     className="MenuItem"
                     activeClassName="ActiveMenuItem"
+                    to="/">
+                    Головна
+                </NavLink>
+                <NavLink 
+                    className="MenuItem"
+                    activeClassName="ActiveMenuItem"
                     to="/burgers">
                     Бургери
                 </NavLink>

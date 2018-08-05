@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../Burgers/Burgers.css';
-
 import axios from '../../axios';
+
+import ButtonControl from '../ButtonControl/ButtonControl';
 
 class BurgerDetails extends Component {
     componentWillMount() {
@@ -39,7 +40,6 @@ class BurgerDetails extends Component {
     }
 
     handleDeleteBurger = (burgerId) => {
-        console.log("handleDeleteBurger");
         axios.delete("/burgers/" + burgerId + ".json")
             .then(response => {
                 this.props.history.goBack();
@@ -55,14 +55,16 @@ class BurgerDetails extends Component {
                     className="BurgerItem"
                     key={this.state.burger.id}>
                     <div>
-                        <button 
-                            onClick={ (burgerId) => this.handleEditBurger(this.state.burger.id) } 
-                            >редагувати
-                        </button>
-                        <button
-                            onClick={ (burgerId) => this.handleDeleteBurger(this.state.burger.id) }
-                            >видалити
-                        </button>
+                        <ButtonControl
+                            classes="ButtonControl ButtonEdit"
+                            clicked={ (burgerId) => this.handleEditBurger(this.state.burger.id) }
+                            label="редагувати"
+                        />
+                        <ButtonControl
+                            classes="ButtonControl ButtonDelete"
+                            clicked={ (burgerId) => this.handleDeleteBurger(this.state.burger.id) }
+                            label="видалити"
+                        />
                     </div>
                     <div >
                         <span className="BurgerItemName">{this.state.burger.name}</span>

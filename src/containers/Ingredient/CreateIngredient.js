@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './IngredientDetails.css';
 import axios from '../../axios';
 
+import InputControl from '../InputControl/InputControl';
+import ButtonControl from '../ButtonControl/ButtonControl';
+
 class CreateIngredient extends Component {
     handleSaveIngredient = (evt) => {
         evt.preventDefault();
@@ -23,15 +26,11 @@ class CreateIngredient extends Component {
         this.props.history.goBack();
     }
 
-    handleIdChange = (evt) => {
-        this.setState({ingredientId: evt.target.value});
-    }
-
-    handleNameChange = (evt) => {
+    handleNameChanges = (evt) => {
         this.setState({ingredientName: evt.target.value});
     }
 
-    handlePriceChange = (evt) => {
+    handlePriceChanges = (evt) => {
         this.setState({ingredientPrice: evt.target.value});
     }
 
@@ -42,31 +41,34 @@ class CreateIngredient extends Component {
                     className="IngredientDetailsForm"
                     onSubmit={ evt => this.handleSaveIngredient(evt) }>
                     
-                    <div className="IngredientDetailsData">
-                        {/* <p>
-                            <label>Id: </label>
-                            <input 
-                                onChange={ evt => this.handleIdChange(evt) }
-                                type="text" 
-                                name="id"/>
-                        </p> */}
-                        <p>
-                            <label>Назва: </label>
-                            <input 
-                                onChange={ evt => this.handleNameChange(evt) }
-                                type="text" 
-                                name="name"/>
-                        </p>
-                        <p>
-                            <label>Ціна: </label>
-                            <input
-                                onChange={ evt => this.handlePriceChange(evt) } 
-                                type="number" 
-                                name="price"/>
-                        </p>
-                    </div>
+                    <ButtonControl
+                        classes="ButtonControl ButtonEdit"
+                        clicked={ evt => this.handleSaveIngredient(evt) }
+                        label="зберегти"
+                    />
+                    <ButtonControl
+                        classes="ButtonControl ButtonCancel"
+                        clicked={ evt => this.handleCancelChanges(evt) }
+                        label="відмінити"
+                    />
 
-                    <input 
+                    <div className="IngredientDetailsData">
+                        <InputControl 
+                            valueChanged={ evt => this.handleNameChanges(evt) }
+                            label="Назва"
+                            type="text"
+                            name="name"
+                            value={ this.state.ingredientName || ""}
+                        />
+                        <InputControl 
+                            valueChanged={ evt => this.handlePriceChanges(evt) }
+                            label="Ціна"
+                            type="number"
+                            name="price"
+                            value={ this.state.ingredientPrice || 0 }
+                        />
+                    </div>
+                    {/* <input 
                         className="IngredientButton IngredientButtonSave"
                         type="submit" 
                         value="зберегти" />
@@ -74,7 +76,7 @@ class CreateIngredient extends Component {
                         className="IngredientButton IngredientButtonCancel"
                         onClick={ evt => this.handleCancelChanges(evt) }
                         >відмінити
-                    </button>
+                    </button> */}
                 </form>
             </div>
         );

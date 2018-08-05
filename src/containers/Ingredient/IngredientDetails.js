@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './IngredientDetails.css';
 import axios from '../../axios';
 
+import InputControl from '../InputControl/InputControl';
+import ButtonControl from '../ButtonControl/ButtonControl';
+
 class IngredientDetails extends Component {
     componentDidMount() {
         let data = null;
@@ -77,28 +80,25 @@ class IngredientDetails extends Component {
 
     render() {
         let ingredient = <p>loading...</p>;
-        let ingredientNameInput = <span>loading...</span>;
-        let ingredientPriceInput = <span>loading...</span>;
+
         if(this.state.ingredient) {
             ingredient = (
-                <div>
-                    <h1>{this.state.ingredient.name}</h1>
-                </div>
-            );
-
-            ingredientNameInput = (
-                <input 
-                    onChange={ evt => this.handleNameChanges(evt) }
-                    type="text" 
-                    name="name" 
-                    value={this.state.ingredient.name}/>
-            );
-            ingredientPriceInput = (
-                <input 
-                    onChange={ evt => this.handlePriceChanges(evt) }
-                    type="number" 
-                    name="price" 
-                    value={this.state.ingredient.price}/>
+                <div className="IngredientDetailsData">
+                        <InputControl 
+                            valueChanged={ evt => this.handleNameChanges(evt) }
+                            label="Назва"
+                            type="text"
+                            name="name"
+                            value={ this.state.ingredient.name }
+                        />
+                        <InputControl 
+                            valueChanged={ evt => this.handlePriceChanges(evt) }
+                            label="Ціна"
+                            type="number"
+                            name="price"
+                            value={ this.state.ingredient.price }
+                        />
+                    </div>
             );
         }
         return(
@@ -106,19 +106,26 @@ class IngredientDetails extends Component {
                 <form 
                     className="IngredientDetailsForm"
                     onSubmit={ evt => this.handleSaveIngredient(evt) }>
-                    
-                    <div className="IngredientDetailsData">
-                        <p>
-                            <label>Назва: </label>
-                            {ingredientNameInput}
-                        </p>
-                        <p>
-                            <label>Ціна: </label>
-                            {ingredientPriceInput}
-                        </p>
-                    </div>
 
-                    <input 
+                    <ButtonControl
+                        classes="ButtonControl ButtonSave"
+                        clicked={ evt => this.handleSaveIngredient(evt) }
+                        label="зберегти"
+                    />
+                    <ButtonControl
+                        classes="ButtonControl ButtonDelete"
+                        clicked={ evt => this.handleDeleteIngredient(evt) }
+                        label="видалити"
+                    />
+                    <ButtonControl
+                        classes="ButtonControl ButtonCancel"
+                        clicked={ evt => this.handleCancelChanges(evt) }
+                        label="назад"
+                    />
+
+                    { ingredient }
+
+                    {/* <input 
                         className="IngredientButton IngredientButtonSave"
                         type="submit" 
                         value="зберегти" />
@@ -131,7 +138,7 @@ class IngredientDetails extends Component {
                         className="IngredientButton IngredientButtonCancel"
                         onClick={ evt => this.handleCancelChanges(evt) }
                         >відмінити
-                    </button>
+                    </button> */}
                 </form>
                 {/* {ingredient} */}
             </div>

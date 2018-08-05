@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import IngredientControl from '../IngredientControl/IngredientControl';
+import InputControl from '../InputControl/InputControl';
+import ButtonControl from '../ButtonControl/ButtonControl';
 
 import axios from '../../axios';
 import './CreateBurger.css';
@@ -135,44 +137,46 @@ class CreateBurger extends Component {
                                 this.handleRemoveIngredient(evt, ingredient.id, ingredient.price) }/>
                     );
             });
-    }
+        }
 
-    return (
-        <div className = "CreateBurger" >
-            <form onSubmit = { evt => this.handleSaveBurger(evt) } >
-                <div className = "" >
-                    <p>
-                        <label > Назва: </label>
-                        <input 
-                            onChange = { evt => this.handleNameChanges(evt) }
-                            type = "text"
-                            name = "name" />
-                    </p>
-                    <p>
-                    <span > Ціна: { this.state.burgerPrice } </span> 
-                    </p >
-                    <p>
-                    <span> { this.state.ingredientsString } </span> 
-                    </p >
-
-                    <input className = "BurgerButton BurgerButtonSave"
-                        type = "submit"
-                        value = "зберегти" />
-                    <button 
-                        className = "BurgerButton BurgerButtonCancel"
-                        onClick = { evt => this.handleCancelChanges(evt) } >
-                        відмінити
-                    </button>
-
+        return (
+            <div className = "CreateBurger" >
+                <form onSubmit = { evt => this.handleSaveBurger(evt) } >
                     <div className = "" >
-                        <hr / >
-                        <p> інгредієнти </p> 
-                        { ingredients } 
-                    </div > 
-                </div> 
-            </form>
-        </div >
-    );
+                        <ButtonControl
+                            classes="ButtonControl ButtonSave"
+                            clicked={ evt => this.handleSaveBurger(evt) }
+                            label="зберегти"
+                        />
+
+                        <ButtonControl
+                            classes="ButtonControl ButtonCancel"
+                            clicked={ evt => this.handleCancelChanges(evt) }
+                            label="відмінити"
+                        />
+
+                        <InputControl 
+                            valueChanged={ evt => this.handleNameChanges(evt) }
+                            label="Назва"
+                            type="text"
+                            name="name"
+                        />
+                        <p>
+                            <span > Ціна: { this.state.burgerPrice } </span> 
+                        </p >
+                        <p>
+                            <span> { this.state.ingredientsString } </span> 
+                        </p >
+
+                        <div className = "" >
+                            <hr / >
+                            <p> інгредієнти </p> 
+                            { ingredients } 
+                        </div > 
+                    </div> 
+                </form>
+            </div >
+        );
 }
 
 state = {

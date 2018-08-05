@@ -1,0 +1,45 @@
+.ButtonControl {
+    color: white;
+    display: inline-block;
+    min-width: 110px;
+    margin: 15px 5px;
+    padding: 10px 15px 12px;
+    font: 700 12px/1 'Open Sans', sans-serif;
+    border: none;
+    box-shadow: inset 0 -1px 0 1px rgba(0, 0, 0, .1), inset 0 -10px 20px rgba(0, 0, 0, .1);
+    cursor: pointer;
+}
+
+.ButtonNew,
+.ButtonEdit {
+    background: #59d
+}
+
+.ButtonSave {
+    background: #6b6
+}
+
+.ButtonCancel {
+    background: #555
+}
+
+.ButtonDelete {
+    background: #d33
+}
+
+.ButtonNew:hover,
+.ButtonEdit:hover {
+    background: #48c
+}
+
+.ButtonSave:hover {
+    background: #5a5
+}
+
+.ButtonDelete:hover {
+    background: #c22
+}
+
+.ButtonCancel:hover {
+    background: #444
+}
