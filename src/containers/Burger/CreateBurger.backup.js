@@ -4,6 +4,7 @@ import IngredientControl from '../IngredientControl/IngredientControl';
 import axios from '../../axios';
 import './CreateBurger.css';
 
+
 class CreateBurger extends Component {
     componentDidMount = () => {
         axios.get("/ingredients.json")
@@ -125,15 +126,42 @@ class CreateBurger extends Component {
         let ingredients = <p> loading... </p>
         if (this.state.ingredients) {
             ingredients = this.state.ingredients.map(ingredient => {
-                    return (
-                        <IngredientControl 
-                            key = { ingredient.id }
-                            ingredient={ingredient}
-                            addIngredient={ (evt, ingredientId, ingredientPrice) => 
-                                this.handleAddIngredient(evt, ingredient.id, ingredient.price)}
-                            removeIngredient={ (evt, ingredientId, ingredientPrice) => 
-                                this.handleRemoveIngredient(evt, ingredient.id, ingredient.price) }/>
-                    );
+                    return ( 
+                        <div className = "BurgerIngredientItem_new"
+                            key = { ingredient.id } >
+                            <button className = "BurgerIngredientItem--Add"
+                                onClick = {
+                                    (evt, ingredientId, ingredientPrice) => this.handleAddIngredient(evt, ingredient.id, ingredient.price)
+                                }>
+                            + </button> 
+                            
+                            <div className = "BurgerIngredientItem--srting" >
+                                <span className = "" > { ingredient.name }, </span> 
+                                <span className = "" > { ingredient.price } грн </span>
+                                <span className = "" > ({ ingredient.quantity }) </span> 
+                            </div >
+
+                            <button className = "BurgerIngredientItem--Add"
+                                onClick = {
+                                    (evt, ingredientId, ingredientPrice) => this.handleRemoveIngredient(evt, ingredient.id, ingredient.price)
+                                }
+                                disabled = { ingredient.quantity === 0 } >
+                            - </button> {
+                            /* <button 
+                                                        className="BurgerButton BurgerButtonAdd"
+                                                        onClick={ (evt, ingredientId, ingredientPrice) => this.handleAddIngredient(evt, ingredient.id, ingredient.price)}
+                                                        >+</button>
+                                                    <span className="IngredientQuantity">{ingredient.quantity}</span>
+                                                    <button
+                                                        className="BurgerButton BurgerButtonRemove" 
+                                                        onClick={ (evt, ingredientId, ingredientPrice) => this.handleRemoveIngredient(evt, ingredient.id, ingredient.price)}
+                                                        disabled={ingredient.quantity === 0}
+                                                        >-</button>
+                                                    <span className="IngredientName">{ingredient.name}</span>
+                                                    <span className="IngredientPrice">{ingredient.price} грн</span> */
+                        } 
+                        </div>
+                );
             });
     }
 

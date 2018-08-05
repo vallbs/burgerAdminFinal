@@ -129,21 +129,26 @@ class EditBurger extends Component {
 
     handleUpdateBurger = (evt) => {
         evt.preventDefault();
-        const burgerId = this.props.match.params.id;
-        let ingredients = this.state.ingredients.filter(ing => {
-            return ing.quantity > 0;
-        });
-        const burger = {
-            name: this.state.burgerName,
-            price: this.state.burgerPrice,
-            ingredients
-        }
+        if(this.state.burgerName.length > 0) {
+            const burgerId = this.props.match.params.id;
+            let ingredients = this.state.ingredients.filter(ing => {
+                return ing.quantity > 0;
+            });
+            const burger = {
+                name: this.state.burgerName,
+                price: this.state.burgerPrice,
+                ingredients
+            }
 
-        axios.put("/burgers/" + burgerId + ".json", burger)
-            .then(response => {
-                this.props.history.goBack();
-            })
-            .catch(error => console.log(error));
+            axios.put("/burgers/" + burgerId + ".json", burger)
+                .then(response => {
+                    this.props.history.goBack();
+                })
+                .catch(error => console.log(error));
+        }
+        else {
+            alert("назна бургеру має бути не пуста")
+        }
     }
 
     handleCancelChanges = (evt) => {
@@ -156,7 +161,7 @@ class EditBurger extends Component {
         let burger = <p> loading... </p>;
         let ingredients = <p> loading... </p>;
 
-        if (this.state.burgerName && this.state.burgerPrice) {
+        if (this.state.burgerName !== null && this.state.burgerPrice) {
             burger = ( 
                 <div>
                     <p>
