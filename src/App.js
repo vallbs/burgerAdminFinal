@@ -4,7 +4,6 @@ import './App.css';
 
 import { withRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import Main from './containers/Main';
 import Menu from './containers/Menu/Menu';
 import Burgers from './containers/Burgers/Burgers';
 import BurgerDetails from './containers/Burger/BurgerDetails';
@@ -15,6 +14,9 @@ import IngredientDetails from './containers/Ingredient/IngredientDetails';
 import CreateIngredient from './containers/Ingredient/CreateIngredient';
 
 class App extends Component {
+  componentDidMount = () => {
+    this.props.history.push("/burgers");
+  }
   render() {
     return (
       <div>
@@ -28,7 +30,7 @@ class App extends Component {
           <Route path="/ingredients/new" component={CreateIngredient}/>
           <Route path="/ingredients/:id" component={IngredientDetails}/>
           <Route path="/ingredients" component={Ingredients}/>
-          <Route path="/" exact component={Main}/>
+          <Route path="/" exact component={Burgers}/>
         </ Switch>
         {/* <Burgers />
         <Ingredients /> */}

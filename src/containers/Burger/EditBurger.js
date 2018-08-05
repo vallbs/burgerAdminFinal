@@ -177,13 +177,13 @@ class EditBurger extends Component {
                 <div>
                     <InputControl 
                             valueChanged={ evt => this.handleNameChanges(evt) }
-                            label="Ціна"
+                            label="Назва"
                             type="text"
                             name="name"
                             value={ this.state.burgerName }
                         />
                     <p>
-                        <span>Ціна: { this.state.burgerPrice } </span> 
+                        <span>Ціна: { this.state.burgerPrice } грн</span> 
                     </p> 
                     <p>
                         <span > { this.state.ingredientsString } </span> 
