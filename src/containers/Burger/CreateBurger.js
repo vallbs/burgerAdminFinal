@@ -58,7 +58,7 @@ class CreateBurger extends Component {
                 })
                 .catch(error => console.log(error));
         } else {
-            alert("назна бургеру має бути не пуста");
+            alert("назва має бути не пуста");
         }
 
     }
@@ -155,7 +155,8 @@ class CreateBurger extends Component {
                             label="відмінити"
                         />
 
-                        <InputControl 
+                        <InputControl
+                            className="IngredientName" 
                             valueChanged={ evt => this.handleNameChanges(evt) }
                             label="Назва"
                             type="text"
@@ -164,13 +165,13 @@ class CreateBurger extends Component {
                         <p>
                             <span >Ціна: { this.state.burgerPrice } грн</span> 
                         </p >
-                        <p>
+                        {/* <p>
                             <span>Інгредієнти: { this.state.ingredientsString } </span> 
-                        </p >
+                        </p > */}
 
                         <div className = "" >
-                            <hr / >
-                            <p> інгредієнти </p> 
+                            {/* <hr / > */}
+                            <p>Інгредієнти: </p> 
                             { ingredients } 
                         </div > 
                     </div> 

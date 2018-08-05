@@ -4,21 +4,25 @@ import './IngredientControl.css';
 const ingredientControl = (props) => {
     return (
         <div 
-            className = {props.ingredient.quantity > 0 ? "IngredientControl IngredientAddedControl": "IngredientControl"}
+            className = "IngredientControl"
             key = { props.ingredient.id }>
             
-            <span className = "IngredientQuantity" >{ props.ingredient.quantity }</span> 
-
             <button 
-                className = "IngredientAddButton"
+                className = ""
                 onClick={ props.addIngredient }>
-            +</button>             
+            +</button> 
+            <span className = "IngredientQuantity" >{ props.ingredient.quantity }</span> 
             <button 
-                className = "IngredientRemoveButton"
+                className = ""
                 onClick={ props.removeIngredient }
                 disabled = { props.ingredient.quantity === 0 } >
             -</button> 
             
+            {/* <div className = "" > 
+                <span className = "" > { props.ingredient.name }, </span> 
+                <span className = "" > { props.ingredient.price }грн </span> 
+                <span className = "" > ({ props.ingredient.quantity }) </span> 
+            </div> */}
             <div className = "IngredientNamePrice" > 
                 <span className = "" > { props.ingredient.name }, </span> 
                 <span className = "" > { props.ingredient.price }грн </span> 

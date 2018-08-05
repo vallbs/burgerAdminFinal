@@ -5,12 +5,6 @@
     margin: 10px;
     /* border: 1px solid black; */
     padding: 0;
-    box-sizing: border-box;
-}
-
-.IngredientAddedControl {
-    background-color: #c8e6c9;
-    border-radius: 5px;
 }
 
 .IngredientNamePrice,
@@ -26,14 +20,4 @@
 
 .IngredientControl>.IngredientQuantity {
     margin: 0 10px;
-    /* border: 1px solid black; */
-    line-height: 28px;
-    height: 28px;
-    font-size: 0.9rem;
-}
-
-.IngredientAddButton,
-.IngredientRemoveButton {
-    width: 28px;
-    height: 28px;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './IngredientDetails.css';
+import './CreateIngredient.css';
 import axios from '../../axios';
+import uniqid from 'uniqid';
 
 import InputControl from '../InputControl/InputControl';
 import ButtonControl from '../ButtonControl/ButtonControl';
@@ -8,17 +9,24 @@ import ButtonControl from '../ButtonControl/ButtonControl';
 class CreateIngredient extends Component {
     handleSaveIngredient = (evt) => {
         evt.preventDefault();
-        const ingredient = {
-            id: this.state.ingredientId,
-            name: this.state.ingredientName,
-            price: this.state.ingredientPrice
+        if(this.state.ingredientName && this.state.ingredientName.length > 0 &&
+           this.state.ingredientPrice && this.state.ingredientPrice.length > 0){
+            const ingredient = {
+                id: uniqid(),
+                name: this.state.ingredientName,
+                price: this.state.ingredientPrice
+            }
+            console.log(ingredient);
+            axios.post("/ingredients.json", ingredient)
+                .then(response => {
+                    this.props.history.goBack();
+                })
+                .catch(error => console.log(error));
         }
-
-        axios.post("/ingredients.json", ingredient)
-            .then(response => {
-                this.props.history.goBack();
-            })
-            .catch(error => console.log(error));
+        else {
+            alert("назва та ціна мають бути не пустими");
+        }
+        
     }
 
     handleCancelChanges = (evt) => {
@@ -65,7 +73,7 @@ class CreateIngredient extends Component {
                             label="Ціна"
                             type="number"
                             name="price"
-                            value={ this.state.ingredientPrice || 0 }
+                            value={ this.state.ingredientPrice }
                         />
                     </div>
                     {/* <input 

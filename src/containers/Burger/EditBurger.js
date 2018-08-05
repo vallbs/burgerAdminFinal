@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from '../../axios';
-import './CreateBurger.css';
+import './EditBurger.css';
 
 import IngredientControl from '../IngredientControl/IngredientControl';
 import InputControl from '../InputControl/InputControl';
@@ -148,7 +148,7 @@ class EditBurger extends Component {
                 .catch(error => console.log(error));
         }
         else {
-            alert("назна бургеру має бути не пуста")
+            alert("назва має бути не пуста");
         }
     }
 
@@ -185,9 +185,9 @@ class EditBurger extends Component {
                     <p>
                         <span>Ціна: { this.state.burgerPrice } грн</span> 
                     </p> 
-                    <p>
+                    {/* <p>
                         <span >Інгредієнти: { this.state.ingredientsString } </span> 
-                    </p> 
+                    </p>  */}
                 </div>
             )
         }
@@ -234,7 +234,9 @@ class EditBurger extends Component {
                     onClick = { evt => this.handleCancelChanges(evt) } >
                     відмінити </button>  */}
                 </form> 
-                <hr /> { ingredients } 
+                {/* <hr />  */}
+                <span >Інгредієнти: </span> 
+                { ingredients } 
             </div>
         );
     }

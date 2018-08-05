@@ -41,11 +41,16 @@ class IngredientDetails extends Component {
 
     handleSaveIngredient = (evt) => {
         evt.preventDefault();
+        if(this.state.ingredient.name.length > 0){
         axios.put("/ingredients/" + this.state.ingredient.id + ".json", this.state.ingredient)
             .then(response => {
                 this.props.history.goBack();
             })
             .catch(error => console.log(error));
+        }
+        else {
+            alert("назва має бути не пуста");
+        }
     }
 
     handleDeleteIngredient = (evt) => {

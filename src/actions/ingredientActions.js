@@ -14,7 +14,8 @@ export const fetchIngredients = (url) => {
                     return {
                         // ...data[key],
                         // id: key
-                        ...data[key]
+                        ...data[key],
+                        id: key
                     }
                 });
 

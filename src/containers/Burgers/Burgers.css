@@ -6,31 +6,41 @@
 .BurgersList {
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .BurgerItem {
     max-width: 250px;
     list-style: none;
     font-size: 1.2rem;
-    border: 1px solid #e8f5e9;
+    border: 1px solid #efebe9;
     border-radius: 5px;
-    margin: 0px 30px 10px 30px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    margin: 0px 30px 20px 6px;
     padding: 15px;
 }
 
 .BurgerItem:hover {
-    background-color: #e8f5e9;
+    background-color: #efebe9;
     cursor: pointer;
     border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
 }
 
 .BurgerItemName {
+    color: #4e342e;
     text-transform: uppercase;
     font-weight: 700;
 }
 
 .BurgerItemIngredients {
     /* font-style: italic; */
+    color: #795548;
     font-size: 0.7rem;
     text-transform: uppercase;
     margin: 5px 0 10px 0;
@@ -38,6 +48,7 @@
 }
 
 .BurgerItemPrice {
+    color: #e65100;
     text-transform: uppercase;
     font-weight: 700;
     font-size: 0.8rem;
